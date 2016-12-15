@@ -12,6 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/index")
 public class IndexController {
 
+    /**
+     * @return 首页数据
+     */
+    @RequestMapping
+    public String index(){
+        return "index";
+    }
+
     @RequestMapping(value = "/root")
     @ResponseBody
     public String getRoot(){
