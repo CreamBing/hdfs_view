@@ -14,29 +14,46 @@
 </head>
 <body>
 <#include "nav.ftl">
-<div class="container-fluid">
-    <div class="panel panel-default">
-        <!-- Default panel contents -->
-        <div class="panel-heading">HDFS</div>
-        <!-- Table -->
-        <div ng-app="rootData" ng-controller="rootController">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>content</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="x in datas">
-                    <td>{{ $index + 1 }}</td>
-                    <td>{{x}}</td>
-                </tr>
-                </tbody>
-            </table>
+    <div class="container-fluid">
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">
+                <div id="searchData" ng-controller="searchCtrl">
+                    <form ng-submit="searchData()">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="input-group">
+                                    <input type="text" ng-model="searchCont" class="form-control">
+                                         <span class="input-group-btn">
+                                            <button class="btn btn-default" type="submit">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </button>
+                                         </span>
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->
+                        </div><!-- /.row -->
+                    </form>
+                </div>
+            </div>
+            <!-- Table -->
+            <div ng-app="rootData" ng-controller="rootController">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>content</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="x in datas">
+                        <td>{{ $index + 1 }}</td>
+                        <td>{{x}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 <#include "footer.ftl">
 <script src="/static/js/thirdPart/angular1.6/angular.min.js"></script>
 <script src="/static/js/thirdPart/jquery1.9.1/jquery-1.9.1.min.js"></script>

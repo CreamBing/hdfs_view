@@ -48,4 +48,13 @@ public class DataService {
         result.put("path",rootPath);
         return result;
     }
+
+    /**
+     * 利用hdfs的FileSystem实现类获取搜索目录下的文件和目录
+     * @return relust
+     */
+    public Map<String,Object> getSearchData(String searchCont){
+        System.out.println(searchCont);
+        return null;
+    }
 }
