@@ -18,7 +18,7 @@ searchData.controller('searchCtrl', function ($scope, $http) {
     $scope.searchData = function () {
         $http({
             method: 'POST',
-            data:{"searchCont":"hello"},
+            data:{"searchCont":$scope.searchCont},
             url: 'http://localhost:8080/data/search'
         }).then(function successCallback(response) {
         }, function errorCallback(response) {

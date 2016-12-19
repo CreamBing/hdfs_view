@@ -1,5 +1,6 @@
 package com.bing.hdfsV.web;
 
+import com.bing.hdfsV.formbean.SearchFormBean;
 import com.bing.hdfsV.service.DataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -7,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -34,7 +34,7 @@ public class DataRestController {
      * @return result
      */
     @RequestMapping(value = "search",method= RequestMethod.POST)
-    public Map<String,Object> getRootData(String searchCont){
-        return dataService.getSearchData(searchCont);
+    public Map<String,Object> getRootData(@RequestBody SearchFormBean searchCont){
+        return dataService.getSearchData(searchCont.getSearchCont());
     }
 }

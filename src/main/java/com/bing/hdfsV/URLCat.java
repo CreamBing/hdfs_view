@@ -1,4 +1,4 @@
-package com.bing;
+package com.bing.hdfsV;
 
 import org.apache.hadoop.fs.FsUrlStreamHandlerFactory;
 import org.apache.hadoop.io.IOUtils;
