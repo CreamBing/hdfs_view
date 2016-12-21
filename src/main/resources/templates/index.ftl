@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/static/js/thirdPart/bootstrasp3.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/global.css">
     <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/js/thirdPart/bootstrap_select2/select2.min.css">
 </head>
 <body>
 <#include "nav.ftl">
@@ -23,7 +24,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="input-group">
-                                    <input type="text" ng-model="searchCont" class="form-control">
+                                    <select id="searchTips" ng-model="searchCont" class="form-control"></select>
                                          <span class="input-group-btn">
                                             <button class="btn btn-default" type="submit">
                                                 <span class="glyphicon glyphicon-search"></span>
@@ -58,6 +59,7 @@
 <script src="/static/js/thirdPart/angular1.6/angular.min.js"></script>
 <script src="/static/js/thirdPart/jquery1.9.1/jquery-1.9.1.min.js"></script>
 <script src="/static/js/thirdPart/bootstrasp3.3.1/js/bootstrap.min.js"></script>
+<script src="/static/js/thirdPart/bootstrap_select2/select2.min.js"></script>
 
 <script src="/static/js/module/index.js"></script>
 </body>
