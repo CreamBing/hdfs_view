@@ -45,15 +45,41 @@ public class DataService {
     }
 
     /**
+     * 利用hdfs的FileSystem实现类获取搜索目录目录下的文件和目录
+     * @return relust
+     */
+    public Map<String,Object> getSearchDataByPath(String searchCont){
+        Map<String,Object> result = new HashMap<String, Object>();
+        List<String> tmpList = getDetailByPath(searchCont);
+        result.put("content",tmpList);
+        //将根路径添加到返回的map中
+        result.put("path",rootPath);
+        return result;
+    }
+
+    /**
      * 利用hdfs的FileSystem实现类获取搜索目录下的文件和目录
      * @return relust
      */
-    public Map<String,Object> getSearchData(String searchCont){
-        System.out.println(searchCont);
-        return null;
+    public List<Map<String,Object>> getSearchData(String searchCont){
+        String searchpath = rootPath+searchCont.substring(1);
+        List<Map<String,Object>> result = new ArrayList<Map<String, Object>>();
+        List<String> paths = getDetailByPath(searchpath);
+        for(int i=0;i<paths.size();i++){
+            Map<String,Object> tmp = new HashMap<String, Object>();
+            tmp.put("id",i+1);
+            tmp.put("path",paths.get(i));
+            result.add(tmp);
+        }
+        return result;
     }
 
 
+    /**
+     * 利用hdfs的FileSystem实现类获取pathStr目录下的文件和目录
+     * @param pathStr
+     * @return
+     */
     private List<String> getDetailByPath(String pathStr){
         List<String> tmpList = new ArrayList<String>();
         Configuration conf = new Configuration();

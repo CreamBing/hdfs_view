@@ -2,6 +2,7 @@ package com.bing.hdfsV.web;
 
 import com.bing.hdfsV.formbean.SearchFormBean;
 import com.bing.hdfsV.service.DataService;
+import org.apache.commons.lang.StringUtils;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,37 +40,26 @@ public class DataRestController {
      */
     @RequestMapping(value = "search",method= RequestMethod.POST)
     public Map<String,Object> getRootData(@RequestBody SearchFormBean searchCont){
-        return dataService.getSearchData(searchCont.getSearchCont());
+        if(StringUtils.isBlank(searchCont.getSearchCont())){
+            return null;
+        }
+        return dataService.getSearchDataByPath(searchCont.getSearchCont());
     }
 
+    /**
+     * 首页搜索框下拉提示
+     * @param q
+     * @return
+     */
     @RequestMapping(value = "searchTips")
-    public Map<String,Object> searchTipsByPath(){
-        List<Map<String,Object>> list = new ArrayList<Map<String, Object>>();
-        for(int i=0;i<10;i++){
-            Map<String,Object> result = new HashMap<String, Object>();
-            result.put("mac",i);
-            list.add(result);
+    public Map<String,Object> searchTipsByPath(String q){
+        if(!q.startsWith("/")){
+            return null;
         }
-        Map<String,Object> test = new HashMap<String, Object>();
-        test.put("mac",list);
-        return test;
-    }
-
-    @RequestMapping(value = "searchTips1")
-    public Map<String,Object> searchTipsByPath1(){
+        List<Map<String,Object>> items = dataService.getSearchData(q);
         Map<String,Object> result = new HashMap<String, Object>();
-        List<String> list = new ArrayList<String>();
-        for(int i=0;i<10;i++){
-            list.add(String.valueOf(i));
-        }
-        result.put("mac",list);
+        result.put("items",items);
         return result;
-    }
-
-    @RequestMapping(value = "searchTips2")
-    public JSONObject searchTipsByPath2(){
-        JSONObject jsonObject = new JSONObject("{id:1,text:'text'},{id:2,text:'text'}");
-        return jsonObject;
     }
 
 

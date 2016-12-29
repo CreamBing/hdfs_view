@@ -37,7 +37,7 @@
                 </div>
             </div>
             <!-- Table -->
-            <div ng-app="rootData" ng-controller="rootController">
+            <div ng-app="rootData" id="rootData" ng-controller="rootController">
                 <table class="table table-striped">
                     <thead>
                     <tr>
