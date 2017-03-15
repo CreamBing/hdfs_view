@@ -19,5 +19,6 @@ public class HdfsViewApp {
     public static void main(String[] args) {
         SpringApplication application = new SpringApplication(HdfsViewApp.class);
         application.run(args);
+
     }
 }
